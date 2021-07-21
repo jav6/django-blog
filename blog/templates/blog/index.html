@@ -1,0 +1,13 @@
+{% extends 'blog/parent/main.html' %}
+{% block title %}Home{% endblock %}
+{% block body %}
+    {% if latest_post_list %}
+    <h4 style="padding-left: 3%; padding-top: 1%;">
+    {% for post in latest_post_list %}
+        <a href="/blog/post={{ post.id }}/">{{ post.post_title }}</a><br>
+    {% endfor %}
+    </h4>
+    {% else %}
+    <h4>No post are available.</h4>
+    {% endif %}
+{% endblock %}
