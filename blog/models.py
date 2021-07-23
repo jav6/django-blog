@@ -8,7 +8,7 @@ class Post(models.Model):
         return self.post_title
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     author =  models.CharField(max_length=80)
     email = models.EmailField()
     text = models.TextField()
