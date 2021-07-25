@@ -5,10 +5,12 @@
     <p style="padding-left: 2%; padding-top: 1%; padding-right: 1%;" >{{ post.post_body }}</p>
     <hr />
     {% if not post.comments.all %}
-        We have no comment yet
+        <p style="padding-left: 0.5%;">We have no comment yet</p><hr />
     {% else %}
+        <p style="padding-left: 0.5%;">Comments:</p><hr />
         {% for comment in post.comments.all %}
-            {{ comment.author }} - {{ comment.text }}
+            <h4 style="padding-left: 1%;" class="blog-post-title">{{ comment.author }} said:</h4>
+            <p style="padding-left: 2%; padding-top: 1%; padding-right: 1%;" >{{ comment.text }}</p>
             <hr />
         {% endfor %}
     {% endif %}
