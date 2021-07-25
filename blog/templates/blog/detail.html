@@ -14,4 +14,9 @@
             <hr />
         {% endfor %}
     {% endif %}
+    <form method="post" style="margin-top: 1.3em; padding: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+    </form>
 {% endblock %}
