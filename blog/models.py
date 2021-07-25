@@ -13,4 +13,5 @@ class Comment(models.Model):
     email = models.EmailField()
     text = models.TextField()
     def __str__(self):
-        return 'Comment {} by {}'.format(self.text, self.author)
+        text = self.text
+        return '{} - Author:{}'.format(text[0:10]+'...', self.author)
