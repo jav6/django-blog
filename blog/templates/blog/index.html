@@ -1,13 +1,17 @@
 {% extends 'blog/parent/main.html' %}
 {% block title %}Home{% endblock %}
 {% block body %}
+<div class="container-fluid">
+    <div class="pt-3"></div>
+    <h1 class="ps-3 my-index-h1">Last Posts:</h1>
     {% if latest_post_list %}
-    <h4 style="padding-left: 3%; padding-top: 1%;">
     {% for post in latest_post_list %}
-        <a href="/blog/post={{ post.id }}/">{{ post.post_title }}</a><br>
+    <ul class="list-group ps-5">
+        <li class="list-group-item"><a href="/blog/post={{ post.id }}/">{{ post.post_title }}</a></li>
+    </ul>
     {% endfor %}
-    </h4>
     {% else %}
-    <h4>No post are available.</h4>
+    <h2 class="ps-3 my-index-h2">!!! No post are available. !!!</h2>
     {% endif %}
+</div>
 {% endblock %}
