@@ -1,22 +1,30 @@
 {% extends 'blog/parent/main.html' %}
 {% block title %}{{ post.post_title }}{% endblock %}
 {% block body %}
-    <h1 style="padding-left: 1%;" class="blog-post-title">{{ post.post_title }}</h1>
-    <p style="padding-left: 2%; padding-top: 1%; padding-right: 1%;" >{{ post.post_body }}</p>
-    <hr />
+    <div class="container-fluid">
+    <div class="pt-5"></div>
+    <h1 class="ps-3">{{ post.post_title }}</h1>
+    <p class="ps-5 pt-1 lead">{{ post.post_body }}</p>
     {% if not post.comments.all %}
-        <p style="padding-left: 0.5%;">We have no comment yet</p><hr />
+        <p class="pt-5 ps-2 fw-bolder"><i class="bi bi-exclamation-square-fill"></i> We have no comment yet</p>
     {% else %}
-        <p style="padding-left: 0.5%;">Comments:</p><hr />
+        <h2 class="pt-5 pb-5 ps-2 fw-bolder"><i class="bi bi-chat-right-quote-fill"></i> Comments :</h2>
         {% for comment in post.comments.all %}
-            <h4 style="padding-left: 1%;" class="blog-post-title">{{ comment.author }} said:</h4>
-            <p style="padding-left: 2%; padding-top: 1%; padding-right: 1%;" >{{ comment.text }}</p>
-            <hr />
+        <div class="container-fluid ps-5">
+            <h3 class="ps-2">{{ comment.author }} said:</h3>
+            <p class="ps-5"><em>{{ comment.text }}</em></p>
+        </div>
         {% endfor %}
-    {% endif %}
-    <form method="post" style="margin-top: 1.3em; padding: 1.3em;">
-          {{ comment_form.as_p }}
-          {% csrf_token %}
-          <button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+        {% endif %}
+    <div class="container-fluid pb-5"></div>
+    <form method="post">
+    <table>
+          {{ comment_form }}
+    </table>
+    <div class="col-auto">
+    {% csrf_token %}
+    <button type="submit" style="margin-left: 3.8em;" class="btn btn-primary mb-3">Submit</button>
+    </div>
     </form>
+    </div>
 {% endblock %}
