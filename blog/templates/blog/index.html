@@ -1,17 +1,50 @@
 {% extends 'blog/parent/main.html' %}
 {% block title %}Home{% endblock %}
 {% block body %}
+{% load static %}
 <div class="container-fluid">
     <div class="pt-3"></div>
-    <h1 class="ps-3 my-index-h1">Last Posts:</h1>
-    {% if latest_post_list %}
-    {% for post in latest_post_list %}
-    <ul class="list-group ps-5">
-        <li class="list-group-item"><a href="/blog/post={{ post.id }}/">{{ post.post_title }}</a></li>
-    </ul>
+    {% if object_list %}
+    <h1 class="text-center my-index-h1"><strong><u>Posts</u></strong></h1>
+    <h2 class="text-center"><i class="bi bi-caret-down-fill"></i></h2>
+    {% for post in object_list %}
+    {% if forloop.counter == 1  or forloop.counter == 4 %}
+    <div class="d-flex justify-content-center pt-5">
+    <div class="row">
+    {% endif %}
+    <div class="card" style="width: 18rem;">
+      <img src="{% static 'blog/image/1.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a class="btn btn-primary" href="/blog/post={{ post.id }}/">{{ post.post_title }}</a>
+      </div>
+    </div>
+    {% if forloop.counter == 3 or forloop.counter == 6 %}
+    </div>
+    </div>
+    {% endif %}
     {% endfor %}
     {% else %}
     <h2 class="ps-3 my-index-h2">!!! No post are available. !!!</h2>
     {% endif %}
+    <div class="pt-5 mt-5"></div>   
+
+    <nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item" >
+        {% if page_obj.has_previous %}
+            <a class="page-link" tabindex="-1" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+        </li>
+        <li class="page-item"><a class="page-link" href="?page=1">Home</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last page</a></li>
+        <li class="page-item">
+        {% if page_obj.has_next %}
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+        </li>
+      </ul>
+    </nav>
+
 </div>
 {% endblock %}
