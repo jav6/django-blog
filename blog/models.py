@@ -19,3 +19,11 @@ class Comment(models.Model):
     def __str__(self):
         text = self.text
         return '{} - Author:{}'.format(text[0:10]+'...', self.author)
+
+# For upload image
+class Image(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='mysite/blog/static/blog/image')
+
+    def __str__(self):
+        return self.title
