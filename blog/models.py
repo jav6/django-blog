@@ -3,6 +3,7 @@ from django.db import models
 # Add Post table in database - to save post data
 class Post(models.Model):
     post_slug = models.SlugField(max_length=60)
+    post_img = models.CharField(max_length=200, blank=True)
     post_title = models.CharField(max_length=60)
     post_body = models.TextField()
     def __str__(self):
