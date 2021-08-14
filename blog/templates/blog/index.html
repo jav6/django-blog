@@ -15,8 +15,8 @@
     <div class="card" style="width: 18rem;">
       <img src="{% static 'blog/image/1.jpg' %}" class="card-img-top" alt="...">
       <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a class="btn btn-primary" href="/blog/post={{ post.id }}/">{{ post.post_title }}</a>
+        <p class="card-text">{{ post.post_title }}</p>
+        <a class="btn btn-primary" href="/blog/post={{ post.id }}/">View Detail</a>
       </div>
     </div>
     {% if forloop.counter == 3 or forloop.counter == 6 %}
