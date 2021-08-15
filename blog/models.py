@@ -22,6 +22,7 @@ class Comment(models.Model):
 
 # For upload image
 class Image(models.Model):
+    post = models.ForeignKey('Post', on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to='mysite/blog/static/blog/image')
 
