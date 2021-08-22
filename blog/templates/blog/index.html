@@ -7,8 +7,12 @@
     {% if object_list %}
     <h1 class="text-center my-index-h1"><strong><u>Posts</u></strong></h1>
     <h2 class="text-center"><i class="bi bi-caret-down-fill"></i></h2>
+    <div class="d-flex justify-content-center pt-5">
+    <div class="row">
     {% for post in object_list %}
-    {% if forloop.counter == 1  or forloop.counter == 4 %}
+    {% if forloop.counter|divisibleby:'4' %}
+    </div>
+    </div>
     <div class="d-flex justify-content-center pt-5">
     <div class="row">
     {% endif %}
@@ -19,11 +23,9 @@
         <a class="btn btn-primary" href="/blog/post={{ post.id }}/">View Detail</a>
       </div>
     </div>
-    {% if forloop.counter == 3 or forloop.counter == 6 %}
-    </div>
-    </div>
-    {% endif %}
     {% endfor %}
+    </div>
+    </div>
     {% else %}
     <h2 class="ps-3 my-index-h2">!!! No post are available. !!!</h2>
     {% endif %}
