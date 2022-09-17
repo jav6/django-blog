@@ -1,3 +1,5 @@
 __pycache__/
-.env
-image
+.venv/
+todo.txt
+dump.sql
+.vscode
